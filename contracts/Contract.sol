@@ -5,9 +5,10 @@ pragma solidity ^0.8.9;
 // import "hardhat/console.sol";
 
 contract Contract {
-    uint public x;
+    event Winner(address);
 
-    function changeX(uint _x) external {
-        x = _x;
+    function attempt() external {
+        require(msg.sender != tx.origin, "msg.sender is equal to tx.origin");
+        emit Winner(msg.sender);
     }
 }
