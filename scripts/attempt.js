@@ -1,0 +1,26 @@
+// We require the Hardhat Runtime Environment explicitly here. This is optional
+// but useful for running the script in a standalone fashion through `node <script>`.
+//
+// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
+// will compile your contracts, add the Hardhat Runtime Environment's members to the
+// global scope, and execute the script.
+const hre = require("hardhat");
+
+async function main() {
+    const contract = await hre.ethers.getContractAt("Contract", "0x4d8382F7C073d096B3f2664398A2B1527ECD5c76");
+    const tryAttempt = await hre.ethers.getContractAt("TryAttempt", "0xA47263A75D7FebecEb32421f920D27d15dbAae4f");
+    console.log(await tryAttempt.tryAttempt(contract.target));
+}
+
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+
+
+
+
+
+
